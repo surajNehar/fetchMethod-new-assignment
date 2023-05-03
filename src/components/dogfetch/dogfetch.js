@@ -1,6 +1,6 @@
 import React from "react";
 import "./dogfetch.css";
-import {useState ,useEffect} from 'react';
+import {useState ,useEffect} from "react";
 
 export default function Dogfetch() {
  
@@ -21,8 +21,8 @@ export default function Dogfetch() {
     <div>
       <img 
         src={image}
-        height={'200px'}
-        width={'200px'}
+        height={'500px'}
+        width={'500px'}
         alt='dog image'
       />
     </div>
