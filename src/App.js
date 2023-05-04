@@ -1,23 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+ function App() {
+  const apiUrl = 'https://cdn-api.co-vin.in/api/v2/auth/public/generateOTP';
+
+  const input = 9975533384;
+
+  function mobileOtp() {
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        mobile: input,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {console.log(error)});
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="otpBtn">
+      <input type="number" />
+      <button onClick={mobileOtp}>OTP</button>
     </div>
   );
 }

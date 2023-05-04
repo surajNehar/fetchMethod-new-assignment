@@ -6,6 +6,11 @@
   height: 40vmin;
   pointer-events: none;
 }
+.otpBtn{
+  margin-top:200px;
+  margin-left: 500px;
+
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
