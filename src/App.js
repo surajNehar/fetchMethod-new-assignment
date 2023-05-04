@@ -1,10 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import './App.css'
+import { useRef } from 'react';
 
- function App() {
+export default function App() {
   const apiUrl = 'https://cdn-api.co-vin.in/api/v2/auth/public/generateOTP';
 
-  const input = 9975533384;
+  const inputref = useRef(' ')
 
   function mobileOtp() {
     fetch(apiUrl, {
@@ -13,21 +14,19 @@ import './App.css';
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        mobile: input,
+        mobile:parseInt(inputref.current.value),
       }),
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
       })
-      .catch((error) => {console.log(error)});
+      .catch((error) => console.error(error));
   }
   return (
-    <div className="otpBtn">
-      <input type="number" />
+    <div>
+      <input type="number" ref={inputref} />
       <button onClick={mobileOtp}>OTP</button>
     </div>
   );
 }
-
-export default App;
