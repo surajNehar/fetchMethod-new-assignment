@@ -1,30 +1,33 @@
 import React from 'react';
 import './App.css'
-import { useState,useEffect } from 'react';
+import { useRef } from 'react';
 import axios from 'axios'
 
 export default function App() {
+  const apiUrl = 'https://cdn-api.co-vin.in/api/v2/auth/public/generateOTP';
 
-  const [image , setImage] = useState(' ')
+  const inputref = useRef(' ')
+
+  function mobileOtp() {
+    axios({
+      method: 'post',
+      url: 'https://cdn-api.co-vin.in/api/v2/auth/public/generateOTP',
+      data:{
+        mobile:parseInt(inputref.current.value)
+      }
 
 
-  useEffect(function (){
-
-    axios.get('https://dog.ceo/api/breeds/image/random')
-   .then ((response)=> setImage(response.data.message))
-    .catch((error) => console.log(error)) 
-
-  },[])
-
-
+    })
+  
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => console.error(error));
+  }
   return (
     <div>
-      <img 
-        src={image}
-        height={'600px'}
-        width={'600px'}
-        alt='dog image'
-      />
+      <input type="number" ref={inputref} />
+      <button onClick={mobileOtp}>OTP</button>
     </div>
   );
 }
