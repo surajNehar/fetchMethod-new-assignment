@@ -2,6 +2,7 @@
   text-align: center;
 }
 
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -10,6 +11,9 @@
   margin-top:200px;
   margin-left: 500px;
 
+}
+.dogImage{
+  margin-left: 200px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
